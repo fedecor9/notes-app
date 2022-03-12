@@ -5,7 +5,9 @@ import "./App.css";
 function App() {
   return (
     <div className="min-vh-100 d-flex flex-column bg-light ">
-      <Header></Header>
+      <header className="sticky-top">
+        <Header></Header>
+      </header>
       <Main></Main>
     </div>
   );

@@ -5,13 +5,17 @@ import "../App.css";
 
 export const Main = () => {
   return (
-    <Container fluid className="h-100 flex-grow-1">
-      <Row>
-        <Col sm={3} className="p-0">
-          <SideBar></SideBar>
+    <Container fluid>
+      <Row md={12}>
+        <Col md={3}>
+          <aside>
+            <SideBar></SideBar>
+          </aside>
         </Col>
-        <Col sm={9}>
-          <ShowNotes></ShowNotes>
+        <Col md={9}>
+          <main>
+            <ShowNotes></ShowNotes>
+          </main>
         </Col>
       </Row>
     </Container>

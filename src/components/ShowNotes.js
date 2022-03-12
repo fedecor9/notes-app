@@ -1,11 +1,20 @@
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
 export const ShowNotes = () => {
-  const aux = ["Primary", "Secondary", "Success", "Info", "Light"];
+  const colors = [
+    "Primary",
+    "Secondary",
+    "Success",
+    "Info",
+    "Light",
+    "Dark",
+    "Light",
+    "Dark",
+  ];
   return (
-    <div>
-      <Row className="g-4 mx-auto my-4">
-        {aux.map((variant, idx) => (
+    <Container className="">
+      <Row md={2} className="g-4 mx-auto my-4">
+        {colors.map((variant, idx) => (
           <Col md={4}>
             <Card
               bg={variant.toLowerCase()}
@@ -26,6 +35,6 @@ export const ShowNotes = () => {
           </Col>
         ))}
       </Row>
-    </div>
+    </Container>
   );
 };
