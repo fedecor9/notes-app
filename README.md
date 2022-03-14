@@ -7,7 +7,7 @@ Project done with React and bootstrap
 In the project directory, you can run:
 
 ## Todo
-[x] Main layout
-[ ] Users
-[ ] Connect with Backend 
+- [x] Main layout
+- [ ] Users
+- [ ] Connect with Backend 
  
