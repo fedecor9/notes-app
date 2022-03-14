@@ -8,6 +8,6 @@ In the project directory, you can run:
 
 ## Todo
 - [x] Main layout
-- [ ] Users
+- [ ] Add login and register users
 - [ ] Connect with Backend 
  
