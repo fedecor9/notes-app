@@ -16,9 +16,11 @@ export const SideBar = (props) => {
   const randomColor = () => Math.floor(Math.random() * colors.length);
 
   const emptyCard = {
+    id: "",
     tittle: "",
     text: "",
     color: colors[randomColor()],
+    date: new Date().toDateString(),
   };
 
   const [card, setCard] = useState(emptyCard);
@@ -37,7 +39,7 @@ export const SideBar = (props) => {
 
   return (
     <Container className="py-5">
-      <div className="position-fixed">
+      <div className="h-100">
         <Row>
           <h2> Create new note</h2>
         </Row>

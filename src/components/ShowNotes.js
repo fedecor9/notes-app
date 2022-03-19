@@ -3,9 +3,9 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 export const ShowNotes = (props) => {
   return (
     <Container>
-      <Row md={2} className="g-4 mx-auto my-4">
+      <Row md={2} xs={1} className="g-4 mx-auto my-4">
         {props.cards.map((elem, idx) => (
-          <Col md={4} key={idx}>
+          <Col lg={4} key={idx}>
             <Card
               bg={elem.color.toLowerCase()}
               text={elem.color.toLowerCase() === "light" ? "dark" : "white"}
@@ -20,6 +20,7 @@ export const ShowNotes = (props) => {
                   Delete
                 </Button>
               </Card.Body>
+              <Card.Footer>{elem.date}</Card.Footer>
             </Card>
           </Col>
         ))}
