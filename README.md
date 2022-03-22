@@ -9,5 +9,5 @@ Project done with React and bootstrap
 ## Todo
 - [x] Main layout
 - [ ] Add login and register users
-- [ ] Connect with Backend 
+- [x] Connect with Backend 
  
