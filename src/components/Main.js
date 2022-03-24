@@ -4,7 +4,7 @@ import { SideBar } from "./Sidebar";
 import "../App.css";
 import { useEffect, useState } from "react";
 
-const API_ROUTE = "http://localhost:3005/api";
+const BASE_URL = "http://localhost:3005/api";
 
 export const Main = () => {
   const initialCards = [
@@ -18,34 +18,31 @@ export const Main = () => {
   ];
 
   const [cards, setCards] = useState(initialCards);
-  //const [newCard, setNewCard] = useState(false);
+  //Card state operations
   const addCard = (card) => {
     card.id = cards.length + 1;
     setCards([...cards, card]);
-    //setNewCard(true);
+  };
+
+  const removeCard = (id) => {
+    setCards(cards.filter((elem) => elem.id !== id));
+  };
+
+  const fetchNotes = async () => {
+    try {
+      console.log("Fetching notes");
+      const response = await fetch(`${BASE_URL}/notes`);
+      if (!response.ok) throw Error(response);
+      const notes = await response.json();
+      setCards((prevState) => [...prevState, ...notes]);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
-    console.log("effect");
-    fetch(`${API_ROUTE}/notes`)
-      .then((res) => {
-        if (!res.ok) throw Error(res);
-        return res.json();
-      })
-      .then((data) => {
-        setCards((prevState) => [...prevState, ...data]);
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    fetchNotes().then(() => console.log("Notes Fetched"));
   }, []);
-
-  const removeCard = (index) => {
-    let newArray = cards.slice();
-    newArray.splice(index, 1);
-    setCards(newArray);
-  };
 
   return (
     <Container fluid>

@@ -1,10 +1,21 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+const BASE_URL = "http://localhost:3005/api";
 
-export const ShowNotes = (props) => {
+export const ShowNotes = ({ cards, removeCard }) => {
+  const handleRemove = (id) => {
+    const url = `${BASE_URL}/notes/${id}`;
+    fetch(url, {
+      method: "DELETE",
+    }).then((response) => {
+      console.log(response);
+      removeCard(id);
+    });
+  };
+
   return (
     <Container>
       <Row md={2} xs={1} className="g-4 mx-auto my-4">
-        {props.cards.map((elem, idx) => (
+        {cards.map((elem, idx) => (
           <Col lg={4} key={idx}>
             <Card
               bg={elem.color.toLowerCase()}
@@ -16,7 +27,7 @@ export const ShowNotes = (props) => {
               </Card.Header>
               <Card.Body>
                 <Card.Text>{elem.text}</Card.Text>
-                <Button onClick={() => props.removeCard(idx)} variant="danger">
+                <Button onClick={() => handleRemove(elem.id)} variant="danger">
                   Delete
                 </Button>
               </Card.Body>

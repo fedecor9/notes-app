@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { Button, Container, Form, Row } from "react-bootstrap";
+import { Container, Form, Row } from "react-bootstrap";
 import "../App.css";
+
+const BASE_URL = "http://localhost:3005/api";
+
 export const SideBar = (props) => {
   const colors = [
     "Primary",
@@ -33,8 +36,17 @@ export const SideBar = (props) => {
   };
 
   const submitCard = () => {
-    props.addCard(card);
-    setCard(emptyCard);
+    fetch(`${BASE_URL}/notes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(card),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.hasOwnProperty("error")) return console.log(data.error);
+        props.addCard(data);
+        setCard(emptyCard);
+      });
   };
 
   return (
@@ -68,10 +80,10 @@ export const SideBar = (props) => {
                 onChange={handleInput}
               />
             </Form.Group>
-            <div className="text-center">
-              <Button onClick={submitCard} className="mt-3">
+            <div className="text-center d-grid gap-2">
+              <button type="button" onClick={submitCard} className="btn-grad">
                 Submit
-              </Button>
+              </button>
             </div>
           </Form>
         </Row>
