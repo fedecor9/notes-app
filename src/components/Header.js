@@ -1,9 +1,24 @@
-import { NavBar } from "./Navbar";
-
+import { Container, Navbar, Nav } from "react-bootstrap";
 export const Header = () => {
   return (
-    <div>
-      <NavBar />
-    </div>
+    <>
+      <nav>
+        <Navbar bg="dark" variant="dark">
+          <Container fluid>
+            <Navbar.Brand>
+              <img
+                src="/logo.ico"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+                alt=" logo"
+              />
+            </Navbar.Brand>
+            <Navbar.Brand>Notes-app</Navbar.Brand>
+            <Nav className="me-auto"></Nav>
+          </Container>
+        </Navbar>
+      </nav>
+    </>
   );
 };

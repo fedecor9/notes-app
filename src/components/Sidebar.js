@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Container, Form, Row } from "react-bootstrap";
 import "../App.css";
 
-const BASE_URL = "http://localhost:3005/api";
-
 export const SideBar = (props) => {
   const colors = [
     "Primary",
@@ -27,6 +25,10 @@ export const SideBar = (props) => {
   };
 
   const [card, setCard] = useState(emptyCard);
+  const [sendResult, setSendResult] = useState({
+    succes: true,
+    message: "",
+  });
 
   const handleInput = (e) => {
     setCard({
@@ -36,16 +38,31 @@ export const SideBar = (props) => {
   };
 
   const submitCard = () => {
-    fetch(`${BASE_URL}/notes`, {
+    setSendResult({
+      succes: false,
+      message: "...Sending",
+    });
+    fetch(`http://localhost:3005/api/notes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(card),
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.hasOwnProperty("error")) return console.log(data.error);
+        if (data.hasOwnProperty("error"))
+          return setSendResult({
+            succes: true,
+            message: data.error,
+          });
+        setSendResult({
+          succes: true,
+          message: "Success",
+        });
         props.addCard(data);
         setCard(emptyCard);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -84,6 +101,7 @@ export const SideBar = (props) => {
               <button type="button" onClick={submitCard} className="btn-grad">
                 Submit
               </button>
+              <h4>{sendResult.message}</h4>
             </div>
           </Form>
         </Row>
