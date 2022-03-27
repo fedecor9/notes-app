@@ -6,6 +6,12 @@ import "../App.css";
 import { useEffect, useState } from "react";
 
 export const Main = () => {
+  const [filter, setFilter] = useState("");
+
+  const handleFilter = (text) => {
+    setFilter(text);
+  };
+
   const [cards, setCards] = useState([]);
   //Card state operations
   const addCard = (card) => {
@@ -36,12 +42,20 @@ export const Main = () => {
       <Row md={12}>
         <Col lg={3} md={4} sm={5}>
           <aside>
-            <SideBar addCard={addCard}></SideBar>
+            <SideBar
+              addCard={addCard}
+              handleFilter={handleFilter}
+              filter={filter}
+            ></SideBar>
           </aside>
         </Col>
         <Col lg={9} md={8} sm={7}>
           <main>
-            <ShowNotes cards={cards} removeCard={removeCard}></ShowNotes>
+            <ShowNotes
+              cards={cards}
+              filter={filter}
+              removeCard={removeCard}
+            ></ShowNotes>
           </main>
         </Col>
       </Row>

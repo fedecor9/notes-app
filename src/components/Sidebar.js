@@ -30,6 +30,13 @@ export const SideBar = (props) => {
     message: "",
   });
 
+  const [filter, setFilter] = useState(props.filter);
+
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+    props.handleFilter(e.target.value);
+  };
+
   const handleInput = (e) => {
     setCard({
       ...card,
@@ -62,12 +69,16 @@ export const SideBar = (props) => {
         setCard(emptyCard);
       })
       .catch((error) => {
+        setSendResult({
+          succes: true,
+          message: "Error: failed to create note",
+        });
         console.log(error);
       });
   };
 
   return (
-    <Container className="py-5">
+    <Container className="py-4">
       <div className="h-100">
         <Row>
           <h2> Create new note</h2>
@@ -79,7 +90,6 @@ export const SideBar = (props) => {
               <Form.Control
                 size="lg"
                 type="text"
-                placeholder="Large text"
                 name="tittle"
                 value={card.tittle}
                 onChange={handleInput}
@@ -91,7 +101,6 @@ export const SideBar = (props) => {
                 size="lg"
                 rows="5"
                 as="textarea"
-                placeholder="Large text"
                 name="text"
                 value={card.text}
                 onChange={handleInput}
@@ -101,9 +110,20 @@ export const SideBar = (props) => {
               <button type="button" onClick={submitCard} className="btn-grad">
                 Submit
               </button>
-              <h4>{sendResult.message}</h4>
+              <h5>{sendResult.message}</h5>
             </div>
           </Form>
+        </Row>
+        <Row>
+          <label htmlFor="searchBar" className="form-label">
+            Filter
+          </label>
+          <input
+            className="form-control"
+            id="searchBar"
+            onChange={handleFilterChange}
+            value={filter}
+          />
         </Row>
       </div>
     </Container>
