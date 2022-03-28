@@ -7,7 +7,7 @@ export const Header = () => {
           <Container fluid>
             <Navbar.Brand>
               <img
-                src="/logo.ico"
+                src={process.env.PUBLIC_URL + "/logo.ico"}
                 width="30"
                 height="30"
                 className="d-inline-block align-top"

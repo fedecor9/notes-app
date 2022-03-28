@@ -49,7 +49,7 @@ export const SideBar = (props) => {
       succes: false,
       message: "...Sending",
     });
-    fetch(`http://localhost:3005/api/notes`, {
+    fetch(`https://notes-app--api.herokuapp.com/api/notes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(card),
@@ -62,8 +62,8 @@ export const SideBar = (props) => {
             message: data.error,
           });
         setSendResult({
-          succes: true,
-          message: "Success",
+          succes: false,
+          message: "",
         });
         props.addCard(data);
         setCard(emptyCard);

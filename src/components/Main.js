@@ -24,7 +24,9 @@ export const Main = () => {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch(`http://localhost:3005/api/notes`);
+      const response = await fetch(
+        `https://notes-app--api.herokuapp.com/api/notes`
+      );
       if (!response.ok) throw Error(response);
       const notes = await response.json();
       setCards(notes);
