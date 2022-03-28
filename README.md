@@ -8,6 +8,7 @@ Project done with React and bootstrap
 
 ## Todo
 - [x] Main layout
-- [ ] Add login and register users
 - [x] Connect with Backend 
- 
+- [x] Filter bar
+- [ ] Animations
+- [ ] Edit note 
