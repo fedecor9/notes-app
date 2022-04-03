@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { ShowNotes } from "./ShowNotes";
 import { SideBar } from "./Sidebar";
 
@@ -6,6 +6,8 @@ import "../App.css";
 import { useEffect, useState } from "react";
 
 export const Main = () => {
+  const [loading, setLoading] = useState(true);
+
   const [filter, setFilter] = useState("");
 
   const handleFilter = (text) => {
@@ -24,11 +26,10 @@ export const Main = () => {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch(
-        `https://notes-app--api.herokuapp.com/api/notes`
-      );
+      const response = await fetch(`http://localhost:3005/api/notes`);
       if (!response.ok) throw Error(response);
       const notes = await response.json();
+      setLoading(false);
       setCards(notes);
     } catch (err) {
       console.log(err);
@@ -40,10 +41,10 @@ export const Main = () => {
   }, []);
 
   return (
-    <Container fluid>
-      <Row md={12}>
-        <Col lg={3} md={4} sm={5}>
-          <aside>
+    <Container fluid className="h-100">
+      <Row md={12} className="h-100">
+        <Col lg={3} md={4} sm={5} className="side-bar">
+          <aside className="h-100 ">
             <SideBar
               addCard={addCard}
               handleFilter={handleFilter}
@@ -53,11 +54,17 @@ export const Main = () => {
         </Col>
         <Col lg={9} md={8} sm={7}>
           <main>
-            <ShowNotes
-              cards={cards}
-              filter={filter}
-              removeCard={removeCard}
-            ></ShowNotes>
+            {loading ? (
+              <Container className=" d-flex h-100 align-items-center justify-content-center">
+                <Spinner animation="border" size="lg" />
+              </Container>
+            ) : (
+              <ShowNotes
+                cards={cards}
+                filter={filter}
+                removeCard={removeCard}
+              ></ShowNotes>
+            )}
           </main>
         </Col>
       </Row>
