@@ -2,7 +2,7 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
 export const ShowNotes = ({ cards, removeCard, filter }) => {
   const handleRemove = (id) => {
-    const url = `http://localhost:3005/api/notes/${id}`;
+    const url = `https://notes-app--api.herokuapp.com/api/notes/${id}`;
     fetch(url, {
       method: "DELETE",
     }).then(() => {

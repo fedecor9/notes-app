@@ -43,7 +43,7 @@ export const CreateCard = (props) => {
       succes: false,
       message: "...Sending",
     });
-    fetch(`http://localhost:3005/api/notes`, {
+    fetch(`https://notes-app--api.herokuapp.com/api/notes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(card),
