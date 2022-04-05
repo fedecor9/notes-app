@@ -32,7 +32,7 @@ body {
     to right,
     #008cff 0%,
     #0066ff 50%,
-    #0026ffd0 100%
+    #0c45ffd0 100%
   );
 }
 
@@ -65,6 +65,13 @@ body {
   list-style: none;
   cursor: pointer;
   font-size: 20px;
+  border-radius: 10px;
+  transition: 0.3s ease-out;
+  padding-left: 20px;
+}
+
+.menu-btn:hover {
+  background-color: #a8a8a865;
 }
 
 .slide-in {
