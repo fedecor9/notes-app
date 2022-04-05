@@ -10,5 +10,5 @@ https://fedecor9.github.io/notes-app/
 - [x] Main layout
 - [x] Connect with Backend 
 - [x] Filter bar
-- [ ] Animations
+- [X] Animations
 - [ ] Edit note 
