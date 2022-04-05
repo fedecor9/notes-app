@@ -90,12 +90,6 @@ body {
   }
 }
 
-@keyframes slideOut {
-  to {
-    transform: translateX(-100%);
-  }
-}
-
 @keyframes popIn {
   from {
     transform: translateY(10%);

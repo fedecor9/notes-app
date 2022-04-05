@@ -30,11 +30,24 @@ export const ShowNotes = ({ cards, removeCard, filter }) => {
               </Card.Header>
               <Card.Body>
                 <Card.Text>{elem.text}</Card.Text>
-                <Button onClick={() => handleRemove(elem.id)} variant="danger">
-                  Delete
-                </Button>
               </Card.Body>
-              <Card.Footer>{elem.date}</Card.Footer>
+              <Card.Footer>
+                <Container fluid>
+                  <Row>
+                    <Col>
+                      <span>{elem.date}</span>
+                    </Col>
+                    <Col>
+                      <Button
+                        onClick={() => handleRemove(elem.id)}
+                        variant="danger"
+                      >
+                        Delete
+                      </Button>
+                    </Col>
+                  </Row>
+                </Container>
+              </Card.Footer>
             </Card>
           </Col>
         ))}

@@ -53,7 +53,7 @@ export const Main = () => {
           </aside>
         </Col>
         <Col lg={9} md={8} sm={7}>
-          <main>
+          <main className="h-100">
             {loading ? (
               <Container className=" d-flex h-100 align-items-center justify-content-center">
                 <Spinner animation="border" size="lg" />
