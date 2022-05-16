@@ -3,7 +3,7 @@ import { Main } from "./components/Main.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-//test
+//t
 function App() {
   return (
     <div className="d-flex flex-column bg-light h-100">
